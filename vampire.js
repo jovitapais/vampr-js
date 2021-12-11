@@ -8,6 +8,7 @@ class Vampire {
 
   /** Simple tree methods **/
 
+
   // Adds the vampire as an offspring of this vampire
   addOffspring(vampire) {
     this.offspring.push(vampire);
@@ -43,18 +44,20 @@ class Vampire {
         return true;
     } return false;  /*NOT CHECKING: offspring of offspring*/
   }
+
   // Returns the vampire object with that name, or null if no vampire exists with that name
   vampireWithName(name) {
-    if(name === this.name) {
+    if (name === this.name) {
       return this;
     }
     for (let vamp of this.offspring) {
-      let search = vamp.vampireWithName(name)
+      let search = vamp.vampireWithName(name);
       if (search) {
         return search;
       }
     } return null;
   }
+
 
   // Returns the total number of vampires that exist
   get totalDescendents() {
@@ -67,11 +70,13 @@ class Vampire {
   // Returns an array of all the vampires that were converted after 1980
   get allMillennialVampires() {
     let millennials = [];
-    if ( this.yearConverted > 1980) {
+    if (this.yearConverted > 1980) {
       millennials.push(this);
     } for (let vamp of this.offspring) {
       millennials = millennials.concat(vamp.allMillennialVampires);
-    }
+    } return millennials;
+  }
+    
  
   /** Stretch **/
 
@@ -83,7 +88,7 @@ class Vampire {
   closestCommonAncestor(vampire) {
 
   }
-};
+}
 
 module.exports = Vampire;
 
